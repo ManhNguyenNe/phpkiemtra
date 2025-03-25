@@ -1,0 +1,82 @@
+B1. Tạo project
+    - tạo thư mục layout: header.php, footer.php
+    - tạo thư mục view: index.php, login.php,mathang.php, register.php
+    - tạo file home.php với đầy đủ cấu trúc trang html
+B2. Code trang home với nội dung sau:
+    - Tạo cấu trúc gồm 3 phần
+        + Header: include trang header
+        + Content: viết mã lệnh if để xác định trang được include 
+        là index hay login hay mathang hay register. 
+        <?php
+            $c_page="index.php";
+            if(isset($_GET['trang']))
+                if($_GET['trang']=='login'){
+                    $c_page="login.php";
+                }
+                else if($_GET['trang']=='register'){
+                    $c_page='register.php';
+                }
+                else if($_GET['trang']=='mathang'){
+                    $c_page='mathang.php';
+                }
+            include("view/".$c_page);
+        ?>
+        + Footer: include trang footer
+B3. Xây dựng link cho trang header.php
+        <a href="home.php?trang=login">Login</a> 
+        <a href="home.php?trang=register">Register</a>
+        <a href="home.php?trang=mathang">Mặt hàng</a>
+B4. Mở trang login.php xây dựng giao diện cho phép login
+        Login<br>
+        <form action="view/xllogin.php" method="POST">
+            user:<input type="text" name="txtuser"><br>
+            pass:<input type="password" name="txtpass"><br>
+            <input type="submit" value="login">
+            <input type="reset" value="Reset">
+
+        </form>
+B5. Viết trang xllogin đăng nhập thành công thì sang 
+trang mathang, đăng nhập thất bại sang trang register
+    <?php
+    $user=$_POST['txtuser'];
+    $pass=$_POST['txtpass'];
+    // xem có tồn tại user và pass đó không nếu có
+    //chuyển sang trang mặt hàng
+    //sai quay về trang register
+    if($user=='admin'&& $pass=='123'){
+        header("location:../home.php?trang=mathang");
+    }
+    else
+        header("location:../home.php?trang=register");
+    ?>
+B6. Tạo nội dung trang register.php
+gồm: ô nhập liệu username, password, confrim password,
+gender, nút register, nút reset; nhớ 
+javascript sử dụng để validate dữ liệu
+
+B7. Tạo nội dung trang xlregister.php
+- Lấy lại username, password
+- Thêm vào danh sách mảng user-> Sang trang đăng nhập
+
+
+
+Yêu cầu 1: Tạo thêm trang mặt hàng
+B1. Vào trang header.php tạo liên kết
+<a href='home.php?trang=mathang'>Mặt hàng</a>
+B2. Tạo trang mặt hàng
+Vào thư mục View: tạo thêm trang mathang.php
+Gõ nội dung: Mặt hàng
+B3. Vào trang home.php bổ mã lệnh
+    else if($_GET['trang']=='mathang')
+        $c_page='mathang.php'
+Yêu cầu 2: 
+B1. Mở trang login.php
+Tạo giao diện login gồm user, pass, nút reset, nút login (submit)
+thẻ form method='POST' action='xllogin.php'
+B2. Tạo trang xllogin.php
+lấy lại hai giá trị user và pass từ form login
+sử dụng if để kiểm tra xem user='admin' và pass='123'
+Nếu đúng
+    điều hướng (header) về trang Mặt hàng
+nếu sai
+    điều hướng về trang Register

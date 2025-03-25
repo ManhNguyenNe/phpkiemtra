@@ -1,0 +1,36 @@
+h2{
+    text-align: center;
+}
+table{
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 80%;
+    text-align: center;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 1rem;
+}
+a{
+    text-decoration: none;
+}
+.pagination {
+display: flex;
+justify-content: center;
+margin-top: 2rem;
+}
+.page {
+    text-decoration: none;
+    color: black;
+    margin: 1rem 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+}
+.page:hover {
+    background-color: #007BFF;
+    color: white;
+    border-color: #0056b3;
+}
