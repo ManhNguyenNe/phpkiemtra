@@ -2,7 +2,7 @@
     $host="127.0.0.1";
     $user="root";
     $pass="";
-    $dbname="quanlynhansu";
+    $dbname="quanlysinhvien";
     $ocon=new mysqli($host,$user,$pass,$dbname);
     if($ocon->connect_error)
     {
